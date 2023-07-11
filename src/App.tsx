@@ -4,8 +4,48 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "./App.css";
+import { CiMenuFries } from "react-icons/ci";
+import { BiSearchAlt2 } from "react-icons/bi";
+import { MdFavorite } from "react-icons/md";
+import { RiPlayListLine } from "react-icons/ri";
+import animationData from "./assets/Girl listening podcast music.json";
+import Lottie from "react-lottie";
 
 const App = () => {
+  const menuList = [
+    {
+      label: "Home",
+      icon: <CiMenuFries></CiMenuFries>,
+    },
+    {
+      label: "Search",
+      icon: <BiSearchAlt2></BiSearchAlt2>,
+    },
+    {
+      label: "Favorite",
+      icon: <MdFavorite></MdFavorite>,
+    },
+    {
+      label: "Playlist",
+      icon: <RiPlayListLine></RiPlayListLine>,
+    },
+  ];
+  const menu = (
+    <>
+      {menuList.map((item) => (
+        <li>
+          <a className="text-white text-decoration-none" href="">
+            {item.icon} <span className="ps-2">{item.label}</span>
+          </a>
+        </li>
+      ))}
+    </>
+  );
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+  };
   return (
     <div className="">
       <Container fluid className="border  ">
@@ -14,49 +54,52 @@ const App = () => {
             <div className="sidebar">
               <div className="">
                 <ul className="list-unstyled fs-4 d-flex flex-column  gap-3">
-                  <li>
-                    <a className="text-white text-decoration-none" href="">
-                      Home
-                    </a>
-                  </li>
-                  <li>
-                    <a className="text-white text-decoration-none " href="">
-                      Search
-                    </a>
-                  </li>
-                  <li>
-                    <a className="text-white text-decoration-none" href="">
-                      Favorite
-                    </a>
-                  </li>
-                  <li>
-                    <a className="text-white  text-decoration-none" href="">
-                      Playlist
-                    </a>
-                  </li>
+                  {menu}
                 </ul>
               </div>
             </div>
           </Col>
           <Col md={8} lg={9}>
-            <div>
+            <div className="">
               <div>
-                <div className="w-80">
-                  {/* <img
-                    className="w-100"
-                    src="https://source.unsplash.com/user/c_v_r/1600x900"
-                    alt=""
-                  /> */}
+                <div
+                  className=" pt-5  bg-success rounded-bottom d-flex align-items-center justify-content-between"
+                  style={{ height: "300px" }}
+                >
+                  <Lottie options={defaultOptions} />
+                  <h4>
+                    Your Favorite tunes <br />
+                    All and All
+                  </h4>
                 </div>
 
+                {/* song list */}
                 <div>
-                  <div>
-                    <Home></Home>
+                  <div className="my-5 d-flex align-items-center justify-content-center">
+                    <h6 className="text-secondary " style={{ width: "250px" }}>
+                      RELEASED THIS WEEK
+                    </h6>
+                    <div className="w-100 ">
+                      <hr />
+                    </div>
                   </div>
-                </div>
-                <div>
                   <div>
-                    <Home></Home>
+                    <div>
+                      <Home></Home>
+                    </div>
+                  </div>
+                  <div className="my-5 d-flex align-items-center justify-content-center">
+                    <h6 className="text-secondary " style={{ width: "250px" }}>
+                      FEATURED PLAYLISTS
+                    </h6>
+                    <div className="w-100 ">
+                      <hr />
+                    </div>
+                  </div>
+                  <div>
+                    <div>
+                      <Home></Home>
+                    </div>
                   </div>
                 </div>
               </div>
